@@ -1,0 +1,13 @@
+[Unit]
+Description=Temperature Monitor for Remote Pis
+After=network.target
+
+[Service]
+User=node
+Group=node
+ExecStart=inter-temperature
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=default.target

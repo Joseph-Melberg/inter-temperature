@@ -1,0 +1,15 @@
+Source: inter-temperature
+Section: devel
+Priority: optional
+Maintainer:  Joseph Melberg <josephbmelbergthird@outlook.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.5.1
+Homepage: https://www.centurionx.net
+Rules-Requires-Root: no
+
+Package: inter-temperature
+Architecture: armhf
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Temperature program for diagnostics
+Version: 1

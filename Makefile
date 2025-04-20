@@ -3,25 +3,28 @@ S_OBJ=$(patsubst %c, %o, $(C_FILES))
 CC = gcc
 CFLAGS = -static -lrabbitmq -L/usr/local/lib/arm-linux-gnueabihf -lrabbitmq
 
-all: temperature
+all: src/inter-temperature
 
-temperature: $(S_OBJ)
+src/inter-temperature: $(S_OBJ)
 	$(CC)  $^ $(CFLAGS) -o $@ 
 
 %.o : %.c %.h
 	$(CC) -c  $^ $(CFLAGS) 
 	mv *.o ./src 
 
-install: src/temperature
-	install -D src/temperature \
-		$(DESTDIR)$(prefix)/bin/usage
+install: src/inter-temperature
+	install -D src/inter-temperature \
+		$(DESTDIR)$(prefix)/bin/inter-temperature
 
 clean:
-	-rm -f src/*.o all temperature
+	-rm -f src/*.o all inter-temperature
+	rm -rf usr
+
 
 distclean: clean
 
 uninstall:
-	-rm -f $(DESTDIR)$(prefix)/bin/temperature
+	-rm -f $(DESTDIR)$(prefix)/bin/inter-temperature
 
-.PHONY: all install clean distclean uninstall test
+.PHONY: all install clean distclean uninstall test create_package
+
